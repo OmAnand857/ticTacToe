@@ -35,18 +35,18 @@ function initiateClickValue(){
 }
 
 function changeMover(){ 
-     mover==0?mover=1:mover=0;
+    
     if(mover==0){
-        document.getElementsByClassName("PlayerA")[0].style.border="10px solid black;";
-        document.getElementsByClassName("PlayerB")[0].style.border="none;";
+        document.getElementsByClassName("PlayerA")[0].classList.add("blackBorder");
+        document.getElementsByClassName("PlayerB")[0].classList.remove("blackBorder");
 
     }
     else{
-        document.getElementsByClassName("PlayerB")[0].style.border="10px solid black;";
-        document.getElementsByClassName("PlayerA")[0].style.border="none;";
+        document.getElementsByClassName("PlayerB")[0].classList.add("blackBorder");
+        document.getElementsByClassName("PlayerA")[0].classList.remove("blackBorder");
 
     }
-   
+    mover==0?mover=1:mover=0;
    
     return;
 }
@@ -107,13 +107,13 @@ function handleClick(){
         clickValue===0?clickValue=1:clickValue=0
     }
     this.removeEventListener("click",handleClick);
+    checkDraw();
 
 }
 
 
 
 function checkWinner(){
-    
    for(var i=0 ;i<3 ; i++){
     let sumRow=0;let sumColumn=0;
         for(var j=0;j<3;j++){
@@ -148,6 +148,9 @@ function checkWinner(){
     return;
 }
 
+
+
+
 }
 // end function cleanup
 
@@ -163,6 +166,26 @@ function endGame(){
     dusra="";
     clickValue=null;
 
+}
+
+
+function checkDraw(){
+
+    var count=0;
+    for(let i=0;i<3;i++){
+        for(let j=0;j<3;j++){
+            if(array[i][j]===-5){
+                    count++;
+                    console.log(count);
+            }
+        }
+    }
+    if(count===0){
+        document.getElementsByClassName("winnerBox")[0].style="display:flex";
+    document.getElementsByClassName("winner")[0].innerText="DRAW Play Again";
+    endGame();
+    }
+    
 }
 
 function declareResult(){
@@ -191,9 +214,12 @@ function onFormSubmit1(event) {
 	const data = new FormData(event.target);
     const dataObject = Object.fromEntries(data.entries());
     PlayerA=dataObject.name;
-    document.getElementsByClassName("PlayerA")[0].classList.add("PlayerBox")
+    if(PlayerA!=""){
+        document.getElementsByClassName("PlayerA")[0].classList.add("PlayerBox")
     document.getElementsByClassName("PlayerA")[0].innerText=PlayerA;
     InitiateGame();
+    }
+    
 }
 
 const form2 = document.getElementById("my-form2");
@@ -203,9 +229,12 @@ function onFormSubmit2(event) {
 	const data = new FormData(event.target);
     const dataObject = Object.fromEntries(data.entries());
     PlayerB=dataObject.name;
-    document.getElementsByClassName("PlayerB")[0].classList.add("PlayerBox");
+    if(PlayerB!=""){
+        document.getElementsByClassName("PlayerB")[0].classList.add("PlayerBox");
     document.getElementsByClassName("PlayerB")[0].innerText=PlayerB;
     InitiateGame();
+    }
+    
 }
 
 
@@ -242,19 +271,21 @@ span.onclick = function() {
     if(PlayerA&&PlayerB){
         if(initiatorBlockScope===0){
             //PlayerA starts
+            changeMover();
             pehla=PlayerA;
             dusra=PlayerB;
             document.getElementsByClassName("initiatorBox")[0].style="display:flex";
             document.getElementsByClassName("firstMove")[0].classList.add("PlayerBox1");
-            document.getElementsByClassName("firstMove")[0].innerText=PlayerA + " will Move first --- Please choose Either to start with 0 or ×";
+            document.getElementsByClassName("firstMove")[0].innerText=PlayerA + " will Move first --- Please choose Either to start with 0 or X";
         }
         else if(initiatorBlockScope===1){
                     // PlayerB starts
+                    changeMover();
                     pehla=PlayerB;
                     dusra=PlayerA;
                     document.getElementsByClassName("initiatorBox")[0].style="display:flex ";
                     document.getElementsByClassName("firstMove")[0].classList.add("PlayerBox1");
-                    document.getElementsByClassName("firstMove")[0].innerText=PlayerB + " will Move first --- Please choose Either to start with 0 or ×";
+                    document.getElementsByClassName("firstMove")[0].innerText=PlayerB + " will Move first --- Please choose Either to start with 0 or X";
 
 
         }
@@ -330,4 +361,13 @@ span.onclick = function() {
   function handleClose(){
     document.getElementsByClassName("winnerBox")[0].style="display:none";
     return;
+  }
+
+
+  const refresh = document.getElementById("refresh");
+  refresh.addEventListener("click",refreshGame);
+
+  function refreshGame(){
+    endGame();
+    restartGame();
   }

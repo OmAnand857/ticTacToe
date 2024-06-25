@@ -107,7 +107,7 @@ function handleClick(){
         clickValue===0?clickValue=1:clickValue=0
     }
     this.removeEventListener("click",handleClick);
-    checkDraw();
+    
 
 }
 
@@ -132,6 +132,7 @@ function checkWinner(){
                 endGame();
         return;
     }
+   
 
    } 
 
@@ -147,6 +148,9 @@ function checkWinner(){
     endGame();
     return;
 }
+
+checkDraw();
+return;
 
 
 
@@ -176,7 +180,6 @@ function checkDraw(){
         for(let j=0;j<3;j++){
             if(array[i][j]===-5){
                     count++;
-                    console.log(count);
             }
         }
     }

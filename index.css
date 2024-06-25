@@ -1,0 +1,272 @@
+body , html {
+    margin:0;
+    padding:0;
+    height:100vh;
+    width:100vw;
+    overflow-x:hidden;
+    font-family: "Pixelify Sans", sans-serif;
+    background:blue;
+}
+
+
+.container{
+         display:flex;
+         flex-wrap:wrap;
+         width:500px;
+         height:500px;
+         align-items:center;
+         background-color:black;
+         justify-content: space-around;
+}
+
+.box{
+        width:30%;
+        height:30%;
+        background:white;
+        transition: background-color 0.1s ease-in 0s;
+        display:grid;
+        place-items:center;
+        font-size: 3em;
+}
+
+.box:hover{
+    background-color:beige;
+}
+
+button{
+        height:40px;
+        width:120px;
+        background:blue;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+        font-family: inherit;
+        
+}
+
+.cross{
+    font-size: 2rem;
+}
+
+
+
+.modal {
+    /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    font-size:2rem;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+form{
+    display:flex;
+}
+form>button{
+    background:seagreen;
+}
+
+#myBtn{
+    position:absolute;
+    top:10px;
+    left:50px;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    border:1px solid white;
+    outline:none;
+    font-size: 2rem;
+    z-index: 150;
+}
+.formContainer{
+
+    margin-top:50px;
+    margin-bottom:20px;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    width:70vw;
+   
+    justify-content: space-around;
+}
+
+.containerBig{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    width:max-content;
+    height:max-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+.PlayerBox{
+    height:40px;
+    width:200px;
+    background:beige;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.PlayerBox1{
+    height:max-content;
+    padding:10px;
+    width:200px;
+    background:beige;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.initiatorBox{
+    display:none;
+    height:max-content;
+    width:max-content;
+    padding:10px;
+    align-items:center;
+    gap:10px;
+    margin-right:auto;
+    margin-left: auto;
+    background-color:seagreen;
+    margin-top:20px;
+}
+.winnerBox{
+    display:none ;
+    height:500px;
+    width:60vw;
+    background-color:black;
+    color:white;
+    z-index:100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    border:1px solid white;
+    border-radius:5px;
+
+}
+
+.winner{
+    font-size: 2rem;
+}
+.replay{
+    margin-top:20px;
+    background-color:seagreen;
+    font-size:2rem;
+    height:max-content;
+    width:max-content;
+    border-radius:5px;
+    z-index: 150;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+}
+.animationError{
+    animation-name: error;
+    animation-duration: 0.5s;
+    animation-play-state: running;
+    animation-iteration-count: 2;
+    animation-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes error {
+    0%{
+        background-color:seagreen;
+    }
+    100%{
+        scale:105%;
+        background-color: red;
+    }
+}
+
+.blackBorder{
+    border:5px solid black;
+    animation-name:mover;
+    animation-duration:0.5s;
+    animation-play-state: running;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@keyframes mover {
+    from{
+        box-shadow: 0 0 0 0 black;
+    }
+		
+	to
+    {
+        box-shadow: 0 0 0 5px black;
+    }
+		
+}
+
+#refresh{
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    background:blue;
+    color:white;
+    position:absolute;
+    top:10px;
+    right:50px;
+    outline:none;
+    border:1px solid white;
+    font-size:2rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container{
+        height:300px;
+        width:300px;
+    }
+    .containerBig{
+        width:100%;
+        height:max-content;
+        flex-direction:column;
+        gap:20px;
+    }
+    .formContainer{
+        flex-direction: column;
+        width:max-content;
+        gap:10px;
+        margin-top:90px;
+    }
+    .initiatorBox{
+        width:90%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction:column;
+        height:max-content;
+        margin-top:10px;
+    }
+    .winnerBox{
+        width:90vw;
+        height:500px;
+    }
+  }

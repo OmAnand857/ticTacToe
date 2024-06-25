@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+
+    <button id="myBtn">&#9432;</button>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close"><span class="cross">×</span></span>
+          <p>Welcome To TIC-TAC-TOE. It is a Duo game. Enter your names to start and then select either to start with <span class="cross"> 0 </span>or with <span class="cross"> × </span> </p>
+        </div>
+      
+      </div>
+
+
+
+
+
+
+
+
+    <div class="formContainer">
+    <form id="my-form1">
+        <input type="text" name="name" placeholder="Name" />
+        <button type="submit">Submit</button>
+    </form>
+    <form id="my-form2">
+        <input type="text" name="name" placeholder="Name" />
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="containerBig">
+        <div class="PlayerB"></div>
+        <div class="container">
+        <div class="box" id="0"></div>
+        <div class="box" id="1"></div>
+        <div class="box" id="2"></div>
+        <div class="box" id="3"></div>
+        <div class="box" id="4" ></div>
+        <div class="box" id="5"></div>
+        <div class="box" id="6"></div>
+        <div class="box" id="7"></div>
+        <div class="box" id="8"></div>
+    </div>
+    <div class="PlayerA"></div>
+    </div>
+    <div class="initiatorBox">
+    <div class="firstMove"></div>
+    <button class="initiate-0 initiate">Start With <span class="cross">0</span></button>
+    <button class="initiate-1 initiate">Start With <span class="cross">×</span></button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="winnerBox">
+        <button id="myBtn" class="closeResult">×</button>
+        <lottie-player class="confetti" src="https://lottie.host/184def68-ad93-413a-9888-e8d2a5ab551d/bMRehgZOfu.json" background="##ffffff" speed="1" style="position:absolute;width: 100vw; height: 100vh"   autoplay direction="1" mode="normal"></lottie-player>
+        <h1 class="winner"></h1>
+        <button class="replay">Replay</button>
+    </div>
+</body>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="./index.js"></script>
+</html>
